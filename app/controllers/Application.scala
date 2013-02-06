@@ -6,7 +6,7 @@ import play.api.mvc._
 object Application extends Controller {
   
   def index = Action {
-	Redirect("/board/hello")
+    Redirect(routes.Application.board("hello"))
   }
   
   def board(id: String) = Action {
