@@ -1,7 +1,5 @@
 package models
-
-import scala.slick.driver.PostgresDriver.simple._
-import Database.threadLocalSession
+import scala.slick.driver.H2Driver.simple._
 
 object Boards extends Table[(Int, String)]("BOARDS") {
   def id = column[Int]("ID", O.PrimaryKey)

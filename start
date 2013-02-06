@@ -1,0 +1,2 @@
+#!/bin/sh
+target/start -Dhttp.port=80 -Dconfig.file=conf/prod.conf
