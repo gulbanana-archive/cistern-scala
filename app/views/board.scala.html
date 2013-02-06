@@ -1,6 +1,22 @@
-@(boardName: String)
+@(boardName: String, threads: Seq[views.Thread])
 
 @main("Cistern: @boardName") {
-	<h1>@boardName</h1>
-	<p>(message board goes here)</p>
+  	<div class="page-header">
+      <h1>@boardName</h1>
+    </div>
+    <div>
+      <table class="table table-bordered">
+        <thead>
+          <tr><th>Thread</th><th>Author</th></tr>
+        </thead>
+        <tbody>
+          @for(thread <- threads) {
+            <tr>
+              <td><a href="@routes.Application.thread(thread.title)">@thread.title</a></td>
+              <td>by @thread.author</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
 }
