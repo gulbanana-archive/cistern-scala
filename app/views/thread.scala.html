@@ -1,14 +1,18 @@
-@(threadTitle: String, posts: Seq[views.Post])
+@(threadTitle: String, posts: Seq[models.Post])
 
-@main("Cistern: @threadTitle") {
+@main(s"Cistern: $threadTitle") {
     <div class="page-header">
       <h2>@threadTitle</h2>
     </div>
     <div>
-      <table class="table table-striped table-bordered">
+      <table class="table">
         <tbody>
           @for(p <- posts) {
-            @post(p)
+            <tr>
+              <td>
+                @post(p)
+              </td>
+            </tr>
           }
         </tbody>
       </table>

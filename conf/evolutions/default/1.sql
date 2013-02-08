@@ -3,8 +3,8 @@
 
 # --- !Ups
 
-create table "Thread" ("id" INTEGER NOT NULL PRIMARY KEY,"name" VARCHAR NOT NULL);
-create table "Board" ("id" INTEGER NOT NULL PRIMARY KEY,"name" VARCHAR NOT NULL);
+create table "Thread" ("id" VARCHAR NOT NULL PRIMARY KEY,"name" VARCHAR NOT NULL);
+create table "Board" ("id" VARCHAR NOT NULL PRIMARY KEY,"name" VARCHAR NOT NULL);
 
 # --- !Downs
 
