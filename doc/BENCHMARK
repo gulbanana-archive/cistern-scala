@@ -1,0 +1,27 @@
+SA FORUMS - HARDWARE
+3x Dell PowerEdge 1750 database servers (master, slave, dev-or-titan) 
+2x Dell PowerEdge 1750 app servers - static pages, redirects to titan vm
+2x vms on 1x Dell PE2950; titan? and memcached 10GB db
+30 GB of search indexes for nonarchived posts
+1x "dev server" in there somewhere
+
+SA FORUMS - SIZE
+peak 2000 concurrent requests (vs state-of-db)
+peak of 16000 concurrent sessions (cookied)
+peak 6k sessions in one forum (D&D during debates; this crashed the forums)
+130 million posts in archives 
+6 million live posts in 40 thousand live threads
+235k posts/week
+peak 40k posts/day
+173k registered users
+
+RAW PLAY - no db connections
+ab -c 500 -k -r -n 30000 localhost:9000/board/hello
+Requests per second:    3589.76 [#/sec] (mean)
+Time per request:       139.285 [ms] (mean)
+Time per request:       0.279 [ms] (mean, across all concurrent requests)
+Transfer rate:          5851.66 [Kbytes/sec] received
+99% requests in <= 250 ms
+
+the (ridiculous) goal is to achieve throughput similar to SA with actual forum software running.
+this VPS: 512MB RAM, 20GB disk, ~500 MHz guaranteed cpu, higher burst CPU - 4840 bogomips, equivalent to a P4 2.5 GHz
