@@ -13,7 +13,7 @@ object ApplicationBuild extends Build {
 
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
-    // play-slick is a preview version of the slick integration coming in 2.2      
+    requireJs += "bootstrap.js"      
   ).dependsOn(RootProject( uri("git://github.com/freekh/play-slick.git") ))
 
 }
