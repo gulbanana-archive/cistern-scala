@@ -1,4 +1,4 @@
-package views
+package models
 
 case class Thread(
     val board: String,

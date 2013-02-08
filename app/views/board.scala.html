@@ -1,4 +1,4 @@
-@(boardName: String, threads: Seq[views.Thread])
+@(boardName: String, threads: Seq[models.Thread])
 
 @main("Cistern: @boardName") {
     <div class="page-header">
@@ -12,7 +12,7 @@
         <tbody>
           @for(thread <- threads) {
             <tr>
-              <td><a href="@routes.Application.thread(thread.title)">@thread.title</a></td>
+              <td><a href="@routes.Thread.view(thread.title, 1)">@thread.title</a></td>
               <td>by @thread.author</td>
             </tr>
           }
