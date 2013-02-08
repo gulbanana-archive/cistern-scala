@@ -2,12 +2,19 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Home page
+# Testing routes
 GET     /                          controllers.Application.index
+GET     /board/predef              controllers.Board.predef
+GET     /thread/predef             controllers.Thread.predef
 
+# Real DB routes
 GET		  /board/:id                 controllers.Board.view(id)
+GET     /board/:id/post            controllers.Board.post(id)
+
+GET     /thread/:id                controllers.Thread.view(id, page:Int = 1)
 GET     /thread/:id/:page          controllers.Thread.view(id, page:Int)
-GET     /thread/:id                controllers.Thread.view(id, page:Int = 1)      
+GET     /thread/:id/post           controllers.Thread.post(id)      
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file              controllers.Assets.at(path="/public", file)
+

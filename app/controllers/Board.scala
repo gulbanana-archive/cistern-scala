@@ -7,13 +7,19 @@ object Board extends Controller {
   
   def view(id: String) = Action {
     val threads = List(
-      models.Thread(id, "Badposter", "where is echeyakee lair"),
-      models.Thread(id, "Very badposter", "Mankrik's Wife"),
-      models.Thread(id, "Complete shitposter", "bring me the heart of isha awak")
+      models.Thread(id, "tim", "predef")
     )
     
     Ok(views.html.board(id, threads))
   }
   
-  def post = TODO
+  def predef = Action {
+    val threads = List(
+      models.Thread("predef", "tim", "predef")
+    )
+    
+    Ok(views.html.board("Predefined Board", threads))
+  }
+  
+  def post(id: String) = TODO
 }

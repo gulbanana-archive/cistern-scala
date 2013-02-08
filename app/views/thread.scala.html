@@ -1,8 +1,8 @@
-@(threadTitle: String, posts: Seq[models.Post])
+@(thread: String, board: String, posts: Seq[models.Post])
 
-@main(s"Cistern: $threadTitle") {
-    <div class="page-header">
-      <h2>@threadTitle</h2>
+@main(s"Cistern: $thread") {
+    <div>
+      <h1>@thread</h2>
     </div>
     <div>
       <table class="table">

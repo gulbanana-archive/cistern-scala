@@ -1,7 +1,7 @@
 @(boardName: String, threads: Seq[models.Thread])
 
 @main(s"Cistern: $boardName") {
-    <div class="page-header">
+    <div>
       <h1>@boardName</h1>
     </div>
     <div class="board">
@@ -13,7 +13,7 @@
           @for(thread <- threads) {
             <tr>
               <td><a href="@routes.Thread.view(thread.title, 1)">@thread.title</a></td>
-              <td>by @thread.author</td>
+              <td width="216">by @thread.author</td>
             </tr>
           }
         </tbody>
