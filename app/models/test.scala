@@ -15,7 +15,8 @@ object TestRepository {
         ("banana", "Gul Banana", now),
         ("ferrinus", "FerrinusPrime", now),
         ("VoxPVoxD", "VoxPVoxD", now),
-        ("tom", "tom", now)
+        ("tom", "tom", now),
+        ("ninjeff", "ninjeff", now)
       )
      
       Boards.insertAll(
@@ -29,7 +30,8 @@ object TestRepository {
         ("ill-guarantee-ya", "I'll guarantee ya I'll be there to see ya", now, "tom", "cistern"),
         ("predef", "Click here for the predefined in-memory thread (does not call database)", now, "banana", "cistern"),
         ("on-the-bonnie-bonnie-banks", "On the bonnie, bonnie banks of Loch Lomond...", now, "tom", "cistern"),
-        ("goonsay", "^^^^^^^^^ :goonsay:", now, "VoxPVoxD", "cistern")
+        ("goonsay", "^^^^^^^^^ :goonsay:", now, "VoxPVoxD", "cistern"),
+        ("ha-ha-ha", "ha ha ha i have hacked this forum", now, "ninjeff", "cistern")
       )
       
       Posts.insertAll(
@@ -53,7 +55,9 @@ object TestRepository {
         ("13", ":goonsay:", now, "VoxPVoxD", "goonsay"),
         ("14", ":goonsay:", now, "VoxPVoxD", "goonsay"),
         ("15", ":goonsay:", now, "VoxPVoxD", "goonsay"),
-        ("16", ":goonsay:", now, "VoxPVoxD", "goonsay")
+        ("16", ":goonsay:", now, "VoxPVoxD", "goonsay"),
+        
+        ("17", "all your post are belong to us", now, "ninjeff", "ha-ha-ha")
       )
     }
   }
