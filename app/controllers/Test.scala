@@ -8,7 +8,7 @@ object Test extends Controller {
   
   def board = Action {
     val threads = Seq(
-      ("predef", "Predefined Thread", UserHeader("predef", "tim"), "Predefined Date")
+      ("predef", "Predefined Thread", UserHeader("predef", "tim"), "Predefined Date", 7)
     )
     
     Ok(views.html.board("Predefined Board", threads))
@@ -37,7 +37,7 @@ object Test extends Controller {
   
   def generateTestData = Action {
     models.TestRepository.createAll()
-    Ok("Test data generated.")
+    Redirect(routes.Board.view("cistern"))
   }
  
 }

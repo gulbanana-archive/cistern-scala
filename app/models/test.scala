@@ -4,6 +4,7 @@ import play.api.Play.current
 import play.api.db.slick.Config.driver.simple._
 import play.api.db.slick.DB
 import java.sql.Timestamp
+import Schema._
 
 object TestRepository {
   private def now = new Timestamp(System.currentTimeMillis)
@@ -37,14 +38,18 @@ object TestRepository {
         ("3", "nope", now, "ferrinus", "fate-is-the"),
         ("4", "hmm, this is a tough question. why don't we run a game about it to find out?", now, "VoxPVoxD", "fate-is-the"),
         
-        ("5", ":goonsay:", now, "VoxPVoxD", "goonsay"),
-        ("6", ":goonsay:", now, "VoxPVoxD", "goonsay"),
-        ("7", ":goonsay:", now, "VoxPVoxD", "goonsay"),
-        ("8", ":goonsay:", now, "VoxPVoxD", "goonsay"),
-        ("9", ":goonsay:", now, "VoxPVoxD", "goonsay"),
-        ("10", ":goonsay:", now, "VoxPVoxD", "goonsay"),
-        ("11", ":goonsay:", now, "VoxPVoxD", "goonsay"),
-        ("12", ":goonsay:", now, "VoxPVoxD", "goonsay"),
+        ("5", "Don't put your daughter on the stage, Mrs. Worthington", now, "tom", "ill-take-the-high-road"),
+        ("9", "what?", now, "ferrinus", "ill-take-the-high-road"),
+        
+        ("6", "The Stately Homes of England", now, "tom", "the-high-road-is-my"),
+        
+        ("7", "Mad Dogs And Englishmen", now, "tom", "ill-guarantee-ya"),
+        ("10", "agreed", now, "VoxPVoxD", "ill-guarantee-ya"),
+        
+        ("8", "I Like America", now, "tom", "on-the-bonnie-bonnie-banks"),
+        ("11", "i dont", now, "banana", "on-the-bonnie-bonnie-banks"),
+        ("12", "me neither", now, "VoxPVoxD", "on-the-bonnie-bonnie-banks"),
+        
         ("13", ":goonsay:", now, "VoxPVoxD", "goonsay"),
         ("14", ":goonsay:", now, "VoxPVoxD", "goonsay"),
         ("15", ":goonsay:", now, "VoxPVoxD", "goonsay"),

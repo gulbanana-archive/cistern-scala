@@ -5,8 +5,15 @@ import play.api.mvc._
 
 object Application extends Controller {
   
+  var genDone = false
+  
   def index = Action {
-    Redirect(routes.Board.view("cistern"))
+    if (genDone) {
+      Redirect(routes.Board.view("cistern"))
+    } else {
+      genDone = true
+      Redirect(routes.Test.generateTestData)
+    }
   }
  
 }

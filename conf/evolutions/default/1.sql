@@ -9,15 +9,15 @@ create table "Thread" ("id" VARCHAR NOT NULL PRIMARY KEY,"subject" VARCHAR NOT N
 create table "Board" ("id" VARCHAR NOT NULL PRIMARY KEY,"title" VARCHAR NOT NULL);
 alter table "Post" add constraint "post_thread" foreign key("threadID") references "Thread"("id") on update NO ACTION on delete NO ACTION;
 alter table "Post" add constraint "post_poster" foreign key("posterID") references "Poster"("id") on update NO ACTION on delete NO ACTION;
-alter table "Thread" add constraint "thread_board" foreign key("boardID") references "Board"("id") on update NO ACTION on delete NO ACTION;
 alter table "Thread" add constraint "thread_poster" foreign key("posterID") references "Poster"("id") on update NO ACTION on delete NO ACTION;
+alter table "Thread" add constraint "thread_board" foreign key("boardID") references "Board"("id") on update NO ACTION on delete NO ACTION;
 
 # --- !Downs
 
 alter table "Post" drop constraint "post_thread";
 alter table "Post" drop constraint "post_poster";
-alter table "Thread" drop constraint "thread_board";
 alter table "Thread" drop constraint "thread_poster";
+alter table "Thread" drop constraint "thread_board";
 drop table "Post";
 drop table "Poster";
 drop table "Thread";

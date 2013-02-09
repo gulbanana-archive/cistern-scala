@@ -13,7 +13,7 @@ object Board extends Controller {
   def view(id: String) = Action {
     val board = getBoardThreads(id)
     Ok(views.html.board(board.title, board.threads map {
-      thread => (thread.threadid, thread.subject, UserHeader(thread.userid, thread.author), formatter.format(thread.date))
+      thread => (thread.threadid, thread.subject, UserHeader(thread.userid, thread.author), formatter.format(thread.date), thread.postcount)
     } ))
   }
   
