@@ -9,13 +9,5 @@ object Board extends Controller {
     Ok(views.html.board(id, models.Thread.byBoard(id)))
   }
   
-  def predef = Action {
-    val threads = List(
-      models.Thread("predef", "tim", "predef")
-    )
-    
-    Ok(views.html.board("Predefined Board", threads))
-  }
-  
   def post(id: String) = TODO
 }

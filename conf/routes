@@ -3,11 +3,12 @@
 # ~~~~
 
 # Testing routes
-GET     /                          controllers.Application.index
-GET     /board/predef              controllers.Board.predef
-GET     /thread/predef             controllers.Thread.predef
+GET     /board/predef              controllers.Test.board
+GET     /thread/predef             controllers.Test.thread
 
-# Real DB routes
+# Main routes
+GET     /                          controllers.Application.index
+
 GET		  /board/:id                 controllers.Board.view(id)
 GET     /board/:id/post            controllers.Board.post(id)
 

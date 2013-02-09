@@ -4,8 +4,17 @@ import play.api._
 import play.api.mvc._
 import models.Post
 
-object Thread extends Controller {
-  def view(id: String, page: Int) = Action {
+object Test extends Controller {
+  
+  def board = Action {
+    val threads = List(
+      models.Thread("predef", "tim", "predef")
+    )
+    
+    Ok(views.html.board("Predefined Board", threads))
+  }
+  
+  def thread = Action {
     val posts = List(
       Post("tim", "/assets/img/tim.jpg", "previous game my entourage consisted of a harlequin baby, an aborted foetus, a dead baby's soul and one of those tumours that's actually a twin"),
       Post("thomas", "/assets/img/thomas.png", "argh like the kind where they strangle each other in the womb?"),
@@ -16,8 +25,11 @@ object Thread extends Controller {
       Post("tim", "/assets/img/tim.jpg", "like, just eyes or spines or teeth or w/e")
     )
     
-    Ok(views.html.thread(id, "boardname", posts))
+    Ok(views.html.thread("Predefined Thread", "Predefined board", posts))
   }
   
-  def post(id: String) = TODO
+  def generateTestData = Action {
+    Ok("Test data generated.")
+  }
+ 
 }
