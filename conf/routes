@@ -6,6 +6,7 @@
 GET     /board/predef             controllers.Test.board
 GET     /thread/predef            controllers.Test.thread
 GET     /post/predef              controllers.Test.post
+GET     /user/predef              controllers.Test.user
 GET     /gen                      controllers.Test.generateTestData
 
 # Main routes
@@ -19,6 +20,8 @@ GET     /thread/:id/:page         controllers.Thread.view(id, page:Int)
 GET     /thread/:id/post          controllers.Thread.post(id)      
 
 GET     /post/:id                 controllers.Post.view(id)
+
+GET     /user/:id                 controllers.User.view(id)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file             controllers.Assets.at(path="/public", file)

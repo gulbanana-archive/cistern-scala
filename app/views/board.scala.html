@@ -1,4 +1,4 @@
-@(boardName: String, threads: Seq[(String, String, String, String)])
+@(boardName: String, threads: Seq[(String, String, views.UserHeader, String)])
 @import java.text.SimpleDateFormat
 
 @main(s"Cistern: $boardName") {
@@ -14,7 +14,7 @@
           @for(thread <- threads) {
             <tr>
               <td><a href="@routes.Thread.view(thread._1, 1)">@thread._2</a></td>
-              <td width="316">@thread._3 on @thread._4</td>
+              <td width="316">@user(thread._3) on @thread._4</td>
             </tr>
           }
         </tbody>

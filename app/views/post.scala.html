@@ -1,4 +1,4 @@
-@(post: models.PostDetail)
+@(post: views.PostDetail)
 
 <div class="post">
   <table width="100%">
@@ -6,7 +6,7 @@
     <th colspan="2">
       <table width="100%">
         <tr>
-          <td>@post.author</td>
+          <td>@user(views.UserHeader(post.userid, post.author))</td>
           <td width="1px"><a href="@routes.Post.view(post.id)">permalink</a></td>
         </tr>
       </table>
