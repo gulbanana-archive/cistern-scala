@@ -59,7 +59,7 @@ object Repository {
     val postsQuery = for {
       p <- Posts if p.id === postID
       u <- p.poster
-    } yield (p.id, u.id, u.username, "/assets/img/" + u.username + ".png", p.content)
+    } yield (p.id, u.id, u.username, ConstColumn("/assets/img/") ++ u.id ++ ".png", p.content)
       
     PostDetail.tupled(postsQuery.first)
   }
