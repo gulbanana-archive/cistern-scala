@@ -5,6 +5,7 @@
 # Testing routes
 GET     /board/predef              controllers.Test.board
 GET     /thread/predef             controllers.Test.thread
+GET     /gen                       controllers.Test.generateTestData
 
 # Main routes
 GET     /                          controllers.Application.index

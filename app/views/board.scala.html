@@ -1,4 +1,4 @@
-@(boardName: String, threads: Seq[models.Thread])
+@(boardName: String, threads: Seq[models.ThreadHeader])
 
 @main(s"Cistern: $boardName") {
     <div>
@@ -12,8 +12,8 @@
         <tbody>
           @for(thread <- threads) {
             <tr>
-              <td><a href="@routes.Thread.view(thread.title, 1)">@thread.title</a></td>
-              <td width="216">by @thread.author</td>
+              <td><a href="@routes.Thread.view(thread.id, 1)">@thread.subject</a></td>
+              <td width="216">@thread.author on @thread.date</td>
             </tr>
           }
         </tbody>

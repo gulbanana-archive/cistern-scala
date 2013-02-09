@@ -14,12 +14,12 @@ object Threads extends Table[(String,String,Timestamp,String,String)]("Thread") 
   def id = column[String]("id", O.PrimaryKey)
   def subject = column[String]("subject")
   def posted = column[Timestamp]("posted")
-  def userID = column[String]("userID")
+  def posterID = column[String]("posterID")
   def boardID = column[String]("boardID")
   
-  def * = id ~ subject ~ posted ~ userID ~ boardID
+  def * = id ~ subject ~ posted ~ posterID ~ boardID
   
-  def user = foreignKey("thread_user", userID, Posters) { _.id }
+  def poster = foreignKey("thread_poster", posterID, Posters) { _.id }
   def board = foreignKey("thread_board", boardID, Boards) { _.id }
 }
 
@@ -27,12 +27,12 @@ object Posts extends Table[(String,String,Timestamp,String,String)]("Post") {
   def id = column[String]("id", O.PrimaryKey)
   def content = column[String]("content")
   def posted = column[Timestamp]("posted")
-  def userID = column[String]("userID")
+  def posterID = column[String]("posterID")
   def threadID = column[String]("threadID")
   
-  def * = id ~ content ~ posted ~ userID ~ threadID
+  def * = id ~ content ~ posted ~ posterID ~ threadID
   
-  def user = foreignKey("post_user", userID, Posters) { _.id }
+  def poster = foreignKey("post_poster", posterID, Posters) { _.id }
   def thread = foreignKey("post_thread", threadID, Threads) { _.id }
 }
 
