@@ -1,0 +1,49 @@
+@import "_theme.less";
+@import "_typography.less";
+@import "_links.less";
+@import "_tables.less";
+@import "_post.less";
+
+/* General layout stuff & useful functions*/
+.bordered {
+	border: 2px solid @border-color;
+	.rounded-corners; 
+}
+
+.rounded-corners(@radius: 6px) {
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -o-border-radius: @radius;
+  border-radius: @radius;
+}
+
+.titlebox>:first-child {
+   background-color: @heading-color;
+}
+
+.inset {
+	display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* specific element styles */
+body {
+	background-color: @alternate-background-color;
+	margin: 0px; padding: 0px;
+}
+
+body #content {
+	background-color: @background-color;
+	margin: 30px;	padding: 20px;
+	border: 2px solid @border-color; .rounded-corners;
+}
+
+td, th, p, h1, h2, h3, h4, h5, h6 {
+	padding: 4px;
+}
+
+div {
+	margin: 0px; padding: 0px;
+}

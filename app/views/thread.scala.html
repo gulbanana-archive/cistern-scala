@@ -1,20 +1,15 @@
 @(thread: String, board: String, posts: Seq[views.PostDetail])
 
 @main(s"Cistern: $thread") {
-    <div>
-      <h1>@thread</h2>
-    </div>
-    <div>
-      <table class="table">
-        <tbody>
-          @for(p <- posts) {
-            <tr>
-              <td>
-                @post(p)
-              </td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    </div>
+<div class="titlebox">  
+
+  <h1>@thread</h1>
+
+  <div class="inset">
+    @for(p <- posts) {
+      @post(p)
+    }
+  </div>
+
+</div>
 }

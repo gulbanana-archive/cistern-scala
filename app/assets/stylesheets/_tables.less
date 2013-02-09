@@ -1,0 +1,17 @@
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  background-color: @highlight-color;
+}
+
+table.alternating-rows tbody tr:nth-child(odd) {
+  background-color: @background-color;
+}
+
+table.alternating-rows tbody tr:nth-child(even) {
+  background-color: @alternate-background-color;
+}

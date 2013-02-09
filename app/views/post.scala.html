@@ -1,20 +1,24 @@
 @(post: views.PostDetail)
 
 <div class="post">
-  <table width="100%">
-  <tr>
-    <th colspan="2">
-      <table width="100%">
-        <tr>
-          <td>@user(views.UserHeader(post.userid, post.author))</td>
-          <td width="1px"><a href="@routes.Post.view(post.postid)">permalink</a></td>
-        </tr>
-      </table>
-    </th>
-  </tr>
-  <tr>
-    <td class="avatar"><img src="@post.avatar"/></td>
-    <td>@post.content</td>
-  </tr>
-  </table>
+
+  <div class="header">
+    <h4 class="username">
+      @user(views.UserHeader(post.userid, post.author))
+    </h4>
+    <h5 class="permalink">
+      <a href="@routes.Post.view(post.postid)">permalink</a>
+    </h5>
+  </div>
+
+  <div class="body">
+    <div class="avatar">
+      <img src="@post.avatar"/>
+    </div>
+
+    <div class="content">
+      @post.content
+    </div>
+  </div>
+
 </div>

@@ -13,7 +13,8 @@ object ApplicationBuild extends Build {
 
 
   val main = play.Project(appName, appVersion, appDependencies).settings(
-    requireJs += "bootstrap.js"      
+    //requireJs += "lib/module"
+    //lessEntryPoints <<= baseDirectory(_ / "app" / "assets" / "stylesheets" ** "whatever.less")
   ).dependsOn(RootProject( uri("git://github.com/freekh/play-slick.git") ))
 
 }
