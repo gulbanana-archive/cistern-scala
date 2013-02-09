@@ -1,5 +1,6 @@
+fix post-display bug where a long one goes to after the float
+ posting
+auth
 some dynamic pages
 avatar upload 
-posting
-auth
 error pages
