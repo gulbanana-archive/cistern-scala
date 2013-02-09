@@ -4,6 +4,7 @@ import play.api.Play.current
 import play.api.db.slick.DB
 import play.api.db.slick.Config.driver.simple._
 import java.sql.Timestamp
+import views.PostDetail
 
 object Repository {
   
@@ -24,12 +25,32 @@ object Repository {
     }
   }
   
-  case class ThreadContents(subject: String, board: String, posts: Seq[views.PostDetail])
-  def getThreadPosts(threadID: String) = {
-    null.asInstanceOf[ThreadContents]
+  case class ThreadContents(subject: String, board: String, posts: Seq[PostDetail])
+  def getThreadPosts(threadID: String) = {    
+    DB.withSession { implicit session =>
+      val threadQuery = for {
+        t <- Threads if t.id === threadID
+        b <- t.board
+      } yield (t.subject, b.title)
+      val (subject, title) = threadQuery.first
+      
+      val postsQuery = for {
+        p <- Posts if p.threadID === threadID
+        u <- p.poster
+      } yield (p.id, u.id, u.username, "/assets/img/avatar.png", p.content)
+      
+      ThreadContents(subject, title, postsQuery.list.map(PostDetail.tupled))
+    }
   }
   
   def getPost(postID: String) = {
-    null.asInstanceOf[views.PostDetail]
+    DB.withSession { implicit session =>
+      val postsQuery = for {
+        p <- Posts if p.id === postID
+        u <- p.poster
+      } yield (p.id, u.id, u.username, "/assets/img/avatar.png", p.content)
+      
+      PostDetail.tupled(postsQuery.first)
+    }
   }
 }
