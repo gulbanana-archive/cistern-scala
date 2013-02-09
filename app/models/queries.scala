@@ -15,24 +15,23 @@ object Repository {
   def getBoardThreads(boardID: String) = DB.withSession { implicit session =>
     val title = Boards.filter(_.id === boardID).map(_.title).first
       
+    val postcountQuery = for {
+      p <- Posts
+      t <- p.thread if t.boardID === boardID
+    } yield (t.id, p.id)
+    
+    val postcounts = postcountQuery.groupBy { case (threadid, postid) =>
+      threadid
+    }.map { case (threadid, grouping) =>
+      (threadid, grouping.length)
+    }.list.toMap.withDefaultValue(0)
+    
     val threadsQuery = for {
       t <- Threads
       u <- t.poster
       b <- t.board if b.id === boardID
     } yield (t.id, u.id, u.username, t.subject, t.posted)
     
-    val postcountQuery = for {
-      p <- Posts
-      t <- p.thread if t.boardID === boardID
-    } yield (t.id, p.id)
-    
-    val postcounts = postcountQuery.groupBy { case (tid, pid) =>
-      tid
-    }.map { case (c,q) =>
-      (c, q.length)
-    }.list.toMap.withDefaultValue(0)
-    
-    //(t.id, u.id, u.username, t.subject, t.posted, p.id.count)
     val threads = threadsQuery.list.map { case (threadid, userid, username, subject, posted) =>
       BoardThread(threadid, userid, username, subject, posted, postcounts(threadid))
     }
