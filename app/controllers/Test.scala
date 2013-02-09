@@ -34,6 +34,7 @@ object Test extends Controller {
   }
   
   def generateTestData = Action {
+    models.TestRepository.createAll()
     Ok("Test data generated.")
   }
  
