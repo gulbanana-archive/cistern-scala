@@ -7,8 +7,7 @@ import models.Repository._
 object Post extends Controller {
   
   def view(id: String) = Action {
-    Ok(views.html.post(getPost(id)))
+    val post = getPost(id)
+    Ok(views.html.single(post))
   }
-  
-  def post(id: String) = TODO
 }

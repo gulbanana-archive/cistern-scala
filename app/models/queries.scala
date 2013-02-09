@@ -7,7 +7,7 @@ import java.sql.Timestamp
 
 case class ThreadHeader(id: String, author: String, subject: String, date: Timestamp)
 
-case class PostDetail(author: String, avatar: String, content: String)
+case class PostDetail(id: String, author: String, avatar: String, content: String)
 
 object Repository {
   

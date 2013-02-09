@@ -7,7 +7,7 @@
   background: #ffffff;
 }
 
-.post th, .board th {
+.post th, .board > th {
 	background: #ddddff;
 }
 

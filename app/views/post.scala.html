@@ -2,7 +2,16 @@
 
 <div class="post">
   <table width="100%">
-  <tr><th colspan="2">@post.author</th></tr>
+  <tr>
+    <th colspan="2">
+      <table width="100%">
+        <tr>
+          <td>@post.author</td>
+          <td width="1px"><a href="@routes.Post.view(post.id)">permalink</a></td>
+        </tr>
+      </table>
+    </th>
+  </tr>
   <tr>
     <td class="avatar"><img src="@post.avatar"/></td>
     <td>@post.content</td>
