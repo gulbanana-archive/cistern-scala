@@ -6,11 +6,7 @@ import play.api.mvc._
 object Board extends Controller {
   
   def view(id: String) = Action {
-    val threads = List(
-      models.Thread(id, "tim", "predef")
-    )
-    
-    Ok(views.html.board(id, threads))
+    Ok(views.html.board(id, models.Thread.byBoard(id)))
   }
   
   def predef = Action {
