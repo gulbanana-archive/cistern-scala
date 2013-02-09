@@ -8,7 +8,7 @@ object Test extends Controller {
   
   def board = Action {
     val threads = Seq(
-      ThreadHeader("predef", "tim", "Predefined Thread", new java.sql.Timestamp(System.currentTimeMillis()))
+      ("predef", "tim", "Predefined Thread", "Predefined Date")
     )
     
     Ok(views.html.board("Predefined Board", threads))

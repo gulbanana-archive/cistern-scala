@@ -1,4 +1,4 @@
-@(boardName: String, threads: Seq[models.ThreadHeader])
+@(boardName: String, threads: Seq[(String, String, String, String)])
 @import java.text.SimpleDateFormat
 
 @main(s"Cistern: $boardName") {
@@ -13,8 +13,8 @@
         <tbody>
           @for(thread <- threads) {
             <tr>
-              <td><a href="@routes.Thread.view(thread.id, 1)">@thread.subject</a></td>
-              <td width="216">@thread.author on @(new SimpleDateFormat("yyyy-MM-dd").format(thread.date))</td>
+              <td><a href="@routes.Thread.view(thread._1, 1)">@thread._2</a></td>
+              <td width="216">@thread._2 on @thread._4</td>
             </tr>
           }
         </tbody>
