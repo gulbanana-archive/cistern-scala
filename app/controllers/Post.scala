@@ -3,10 +3,13 @@ package controllers
 import play.api._
 import play.api.mvc._
 import models.Repository._
+import views._
 
 object Post extends Controller {
   def view(id: String) = Action {
-    val post = getPost(id)
-    Ok(views.html.single(post))
+    val (context, post) = getPost(id)
+    Ok(html.single(BoardHeader(context.boardid, context.boardtitle),
+                   ThreadHeader(context.threadid, context.threadtitle),
+                   post))
   }
 }

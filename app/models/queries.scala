@@ -39,29 +39,36 @@ object Repository {
     BoardWithThreads(title, threads)
   }
   
-  case class ThreadContents(subject: String, board: String, posts: Seq[PostDetail])
+  case class ThreadContents(subject: String, boardid: String, board: String, posts: Seq[PostDetail])
   def getThreadPosts(threadID: String) = DB.withSession { implicit session =>
     val threadQuery = for {
       t <- Threads if t.id === threadID
       b <- t.board
-    } yield (t.subject, b.title)
-    val (subject, title) = threadQuery.first
+    } yield (t.subject, b.id, b.title)
+    val (subject, boardid, title) = threadQuery.first
       
     val postsQuery = for {
       p <- Posts if p.threadID === threadID
       u <- p.poster
     } yield (p.id, u.id, u.username, ConstColumn("/assets/img/") ++ u.id ++ ".png", p.content)
       
-    ThreadContents(subject, title, postsQuery.list.map(PostDetail.tupled))
+    ThreadContents(subject, boardid, title, postsQuery.list.map(PostDetail.tupled))
   }
   
+  case class PostContext(threadid: String, threadtitle: String, boardid: String, boardtitle: String)
   def getPost(postID: String) = DB.withSession { implicit session =>
     val postsQuery = for {
       p <- Posts if p.id === postID
       u <- p.poster
     } yield (p.id, u.id, u.username, ConstColumn("/assets/img/") ++ u.id ++ ".png", p.content)
+    
+    val ctxQuery = for {
+      p <- Posts if p.id === postID
+      t <- p.thread
+      b <- t.board
+    } yield (t.id, t.subject, b.id, b.title)
       
-    PostDetail.tupled(postsQuery.first)
+    (PostContext.tupled(ctxQuery.first), PostDetail.tupled(postsQuery.first))
   }
   
 }

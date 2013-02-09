@@ -2,7 +2,7 @@ package controllers
 
 import play.api._
 import play.api.mvc._
-import views.UserHeader
+import views._
 
 object Test extends Controller {
   
@@ -25,12 +25,14 @@ object Test extends Controller {
       views.PostDetail("predef", "predef", "tim", "/assets/img/tim.jpg", "like, just eyes or spines or teeth or w/e")
     )
       
-    Ok(views.html.thread("Predefined Thread", "board name not available", posts))
+    Ok(views.html.thread("Predefined Thread", views.BoardHeader("predef", "Predefined Board"), posts))
   }
   
   def post = Action {
     val post = views.PostDetail("predef", "predef", "Predefined Poster", "/assets/img/thomas.png", "Predefined Post")
-    Ok(views.html.single(post))
+    Ok(views.html.single(BoardHeader("predef", "Predefined Board"),
+                         ThreadHeader("predef", "Predefined Thread"),
+                         post))
   }
   
   def user = TODO

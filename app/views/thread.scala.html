@@ -1,9 +1,9 @@
-@(thread: String, board: String, posts: Seq[views.PostDetail])
+@(thread: String, board: views.BoardHeader, posts: Seq[views.PostDetail])
 
 @main(s"Cistern: $thread") {
 <div class="titlebox">  
 
-  <h1>@thread</h1>
+  <h2><a href="@routes.Board.view(board.id)">@board.title</a> :: @thread</h2>
 
   <div class="inset">
     @for(p <- posts) {
