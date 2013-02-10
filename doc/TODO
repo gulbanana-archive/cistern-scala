@@ -3,4 +3,5 @@ postgresql
 auth
 some dynamic pages
 avatar upload 
-error pages
+error views
+pagination

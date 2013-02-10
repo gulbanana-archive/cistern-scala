@@ -50,9 +50,9 @@ object Repository {
     val postsQuery = for {
       p <- Posts if p.threadID === threadID
       u <- p.poster
-    } yield (p.id, u.id, u.username, ConstColumn("/assets/img/") ++ u.id ++ ".png", p.content)
+    } yield (p.id, u.id, u.username, ConstColumn("/assets/img/") ++ u.id ++ ".png", p.content, p.posted)
       
-    ThreadContents(subject, boardid, title, postsQuery.list.map(PostDetail.tupled))
+    ThreadContents(subject, boardid, title, postsQuery.sortBy(_._6).list.map(PostDetail.tupled))
   }
   
   case class PostContext(threadid: String, threadtitle: String, boardid: String, boardtitle: String)
@@ -60,7 +60,7 @@ object Repository {
     val postsQuery = for {
       p <- Posts if p.id === postID
       u <- p.poster
-    } yield (p.id, u.id, u.username, ConstColumn("/assets/img/") ++ u.id ++ ".png", p.content)
+    } yield (p.id, u.id, u.username, ConstColumn("/assets/img/") ++ u.id ++ ".png", p.content, p.posted)
     
     val ctxQuery = for {
       p <- Posts if p.id === postID
