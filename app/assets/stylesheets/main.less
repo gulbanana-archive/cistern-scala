@@ -2,6 +2,7 @@
 @import "_typography.less";
 @import "_links.less";
 @import "_tables.less";
+@import "_forms.less";
 @import "_post.less";
 
 /* General layout stuff & useful functions*/
@@ -20,12 +21,13 @@
 
 .titlebox>:first-child {
    background-color: @heading-color;
+   margin-bottom: @base-pad*2;
 }
 
 .inset {
 	display: block;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: @base-pad*2;
+  margin-right: @base-pad*2;
 }
 
 /* specific element styles */
@@ -38,12 +40,4 @@ body #content {
 	background-color: @background-color;
 	margin: 30px;	padding: 20px;
 	border: 2px solid @border-color; .rounded-corners;
-}
-
-td, th, p, h1, h2, h3, h4, h5, h6 {
-	padding: 4px;
-}
-
-div {
-	margin: 0px; padding: 0px;
 }

@@ -1,10 +1,9 @@
 @import "_theme.less";
 
 .post {
-  .inset;
   .rounded-corners;
   border: 2px solid @border-color;
-  margin-bottom: 8px;
+  margin-bottom: @base-pad*2;
   
   .header {
     overflow: auto;
@@ -19,21 +18,14 @@
   }
   
   .body {
-    overflow: auto;
     .avatar {
-      float: left;
-      height: 136px;
-      width: 136px;
+      height: 125px;
+      width: 125px;
+      max-width: 125px;
       border-right: 2px solid @border-color;
-      
-      img {
-        margin: 4px
-      }
     }
     .content {
-      display: inline-block;
-      padding: 4px;
-      float: left;
+      vertical-align: top;
     }
   }
 }

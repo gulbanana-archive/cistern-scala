@@ -51,13 +51,18 @@ object TestRepository {
         ("8", "I Like America", now, "tom", "on-the-bonnie-bonnie-banks"),
         ("11", "i dont", now, "banana", "on-the-bonnie-bonnie-banks"),
         ("12", "me neither", now, "VoxPVoxD", "on-the-bonnie-bonnie-banks"),
+        ("19", "[b]Adjudicating Disbelief:[/b] Disbelief is triggered whenever the operation of magic is apparent to Sleeper witnesses. This most often happens when a mage attempts to cast or sustain a straightforwardly fantastic vulgar spell in a scene containing Sleepers; as soon as Sleepers see the effects of a spell, they disbelieve. Disbelief is applied whenever and wherever a spell's effects are or would be seen, so it's as difficult to teleport out of a crowd as into a crowd.<br/>Vulgar spell effects don't inherently trigger Disbelief when they consist of natural phenomena. The direct conjuration, bizarre behavior, or gross transformation of vulgar spell effects, on the other hand, do. A tornado that rips through a populated area won't trigger Disbelief on its own, but it will if it chases down individual people, turns everything it touches to glass, or is created on the spot with the wave of a hand.", now, "ferrinus", "on-the-bonnie-bonnie-banks"),
         
         ("13", ":goonsay:", now, "VoxPVoxD", "goonsay"),
         ("14", ":goonsay:", now, "VoxPVoxD", "goonsay"),
         ("15", ":goonsay:", now, "VoxPVoxD", "goonsay"),
         ("16", ":goonsay:", now, "VoxPVoxD", "goonsay"),
+        ("20", ":goonsay:", now, "VoxPVoxD", "goonsay"),
+        ("21", ":goonsay:", now, "VoxPVoxD", "goonsay"),
+        ("22", ":goonsay:", now, "VoxPVoxD", "goonsay"),
         
-        ("17", "all your post are belong to us", now, "ninjeff", "ha-ha-ha")
+        ("17", "all your post are belong to us", now, "ninjeff", "ha-ha-ha"),
+        ("18", "or it could be more like disbelief marks you, the mage. as soon as you've been zapped, you'll always lose to disbelief for the rest of the scene. i don't like how that looks for multiple mages though, it'd be weird to see one laughing and chasing another because only one got unlucky", now, "ferrinus", "ha-ha-ha") 
       )
     }
   }

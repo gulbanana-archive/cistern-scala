@@ -1,4 +1,0 @@
--- for h2
-insert into "User" ("id", "registered", "username") values ('user', {ts '2001-01-01'}, 'USERNAME');
-insert into "Board" ("id", "title") values ('board', 'TITLE');
-insert into "Thread" ("id", "posted", "subject", "boardID", "userID") values ('thread', {ts '2001-01-01'}, 'SUBJECT', 'board', 'user');
