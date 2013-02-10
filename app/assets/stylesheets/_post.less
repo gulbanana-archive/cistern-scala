@@ -3,7 +3,6 @@
 .post {
   .rounded-corners;
   border: 2px solid @border-color;
-  margin-bottom: @base-pad*2;
   
   .header {
     overflow: auto;
@@ -23,8 +22,13 @@
       max-width: 125px;
       border-right: 2px solid @border-color;
     }
-    .content {
+    .postcontent {
+      
       vertical-align: top;
     }
   }
+}
+
+.post:not(:last-child) {
+	margin-bottom: @base-pad*2;
 }

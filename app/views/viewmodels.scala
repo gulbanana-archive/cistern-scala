@@ -1,4 +1,5 @@
 package views
+
 import java.util.Date
 
 case class PostDetail(postid: String, userid: String, author: String, avatar: String, content: String, posted: Date)

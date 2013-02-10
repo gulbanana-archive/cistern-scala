@@ -12,7 +12,7 @@ object Test extends Controller {
       ("predef", "Predefined Thread", UserHeader("predef", "tim"), "Predefined Date", 7)
     )
     
-    Ok(views.html.board("Predefined Board", threads))
+    Ok(views.html.board("predef", "Predefined Board", threads))
   }
   
   def thread = Action {
@@ -30,7 +30,7 @@ object Test extends Controller {
       p("tim", "like, just eyes or spines or teeth or w/e")
     )
       
-    Ok(views.html.thread("Predefined Thread", views.BoardHeader("predef", "Predefined Board"), posts))
+    Ok(views.html.thread("predef", "Predefined Thread", views.BoardHeader("predef", "Predefined Board"), posts))
   }
   
   def post = Action {

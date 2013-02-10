@@ -6,9 +6,9 @@
     <h4 class="username">
       @user(views.UserHeader(post.userid, post.author))
     </h4>
-    <h5 class="permalink">
-      <a href="@routes.Post.view(post.postid)">permalink</a>
-    </h5>
+    <h4 class="permalink">
+      <small><a href="@routes.Post.view(post.postid)">permalink</a></small>
+    </h4>
   </div>
 
   <div class="body">
@@ -17,7 +17,7 @@
         <td class="avatar">
           <img src="@post.avatar"/>
         </td>
-        <td class="content">
+        <td class="postcontent">
           @post.content
         </td>
       </tr>

@@ -1,7 +1,6 @@
 @import "_theme.less";
 
-body {
-  margin: 0;
+body, textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
@@ -31,10 +30,14 @@ h4 { .header(20px, 17.5px, 14px); }
 h5 { .header(20px, 14px, 14px); }
 h6 { .header(20px, 11.9px, 11.9px); }
 
-td, th, p, h1, h2, h3, h4, h5, h6 {
+p, h1, h2, h3, h4, h5, h6 {
   margin: 0px; padding: @base-pad;
 }
 
 div {
   margin: 0px; padding: 0px;
+}
+
+button {
+	font-size: 16px;
 }

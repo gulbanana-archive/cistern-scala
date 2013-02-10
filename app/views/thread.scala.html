@@ -1,15 +1,30 @@
-@(thread: String, board: views.BoardHeader, posts: Seq[views.PostDetail])
+@(id: String, subject: String, board: BoardHeader, posts: Seq[PostDetail])
 
-@main(s"Cistern: $thread") {
-<div class="titlebox">  
-
-  <h2><a href="@routes.Board.view(board.id)">@board.title</a> :: @thread</h2>
+@main(s"Cistern: $subject") {
+<div class="titlebox"> 
+  <h2><a href="@routes.Board.view(board.id)">@board.title</a> :: @subject</h2>
 
   <div class="inset">
     @for(p <- posts) {
       @post(p)
     }
   </div>
+</div>
 
+<div class="unfocused titlebox"> 
+  <h3>Add post</h3>
+  <div class="inset bordered">
+    @helper.form(action = routes.Thread.post(id)) {
+      <table>
+        <tr>
+          <td width="100%">Posting to "@subject"</td>
+          <td nowrap><button>Post</button></td>
+        </tr>
+        <tr>
+          <td colspan="2">@helper.textarea(NewThread.form("content"), 'placeholder->"Enter post content")</td>
+        </tr>
+      </table>
+    }
+  </div>
 </div>
 }

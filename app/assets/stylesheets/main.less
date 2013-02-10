@@ -19,6 +19,9 @@
   border-radius: @radius;
 }
 
+.titlebox {
+	margin-bottom: @base-pad*5;
+}
 .titlebox>:first-child {
    background-color: @heading-color;
    margin-bottom: @base-pad*2;
@@ -30,13 +33,17 @@
   margin-right: @base-pad*2;
 }
 
+.unfocused {
+	opacity: 1.0;
+}
+
 /* specific element styles */
 body {
 	background-color: @alternate-background-color;
 	margin: 0px; padding: 0px;
 }
 
-body #content {
+body .content {
 	background-color: @background-color;
 	margin: 30px;	padding: 20px;
 	border: 2px solid @border-color; .rounded-corners;

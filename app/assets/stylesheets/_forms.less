@@ -1,1 +1,44 @@
 @import "_theme.less";
+
+dt {
+	display: none;
+}
+
+dd {
+	-webkit-margin-start: 0px;
+}
+
+dd.info {
+	display: none;
+}
+
+dl, input, textarea {
+	margin: 0px;
+	padding: 0px;
+}
+
+textarea {
+	display: block;
+	box-sizing: border-box;
+	width: 100%;
+}
+
+button {
+	.rounded-corners;
+	background-color: @alternate-background-color;
+	color: @link-color;
+	border: 2px solid @border-color;
+	/*box-shadow: @border-color 2px 2px 2px 2px;*/
+}
+
+button:focus {
+	border: 0px;
+}
+
+button:hover {
+  color: @action-color;
+}
+
+button:active {
+  background-color: @highlight-color;
+}
