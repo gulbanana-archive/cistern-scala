@@ -1,29 +1,52 @@
-@(boardName: String, threads: Seq[(String, String, views.UserHeader, String, Int)])
-@import java.text.SimpleDateFormat
+@(id: String, title: String, threads: Seq[(String, String, UserHeader, String, Int)])
 
-@main(s"Cistern: $boardName") {
+@main(s"Cistern: $title") {
 <div class="titlebox">
-  <h2>@boardName</h2>
+  <h2>@title</h2>
 
   <div class="inset bordered">
   <table class="alternating-rows">
     <thead>
     <tr>
-      <th>Thread</th>
-      <th>Posts</th>
-      <th>Author</th>
+      <th><h4>Thread</h4></th>
+      <th><h4>Posts</h4></th>
+      <th><h4>Author</h4></th>
     </tr>
     </thead>
     <tbody>
     @for(thread <- threads) {
       <tr>
-        <td width="100%"><a href="@routes.Thread.view(thread._1, 1)">@thread._2</a></td>
-        <td nowrap>@thread._5</td>
-        <td nowrap>@user(thread._3) on @thread._4</td>
+        <td width="100%">
+          <p><a href="@routes.Thread.view(thread._1, 1)">@thread._2</a></p>
+        </td>
+        <td nowrap>
+          <p>@thread._5</p>
+        </td>
+        <td nowrap>
+          <p>@user(thread._3) on @thread._4</p>
+        </td>
       </tr>
     }
     </tbody>
   </table>
+  </div>
+</div>
+
+<div class="unfocused titlebox"> 
+  <h3>Add thread</h3>
+  <div class="inset bordered">
+    @helper.form(action = routes.Board.post(id)) {
+      <table>
+        <tr>
+          <td nowrap>Thread title:</td>
+          <td width="100%">@helper.inputText(NewThread.form("subject"), 'placeholder->"Enter thread title", 'size->100)</td>
+          <td nowrap><button>Post</button></td>
+        </tr>
+        <tr>
+          <td colspan="3">@helper.textarea(NewThread.form("content"), 'placeholder->"Enter post content")</td>
+        </tr>
+      </table>
+    }
   </div>
 </div>
 }

@@ -1,7 +1,9 @@
 posting
+make stat display work
 postgresql
 auth
 some dynamic pages
 avatar upload 
 error views
 pagination
+restore javascript minification (requirejs)
