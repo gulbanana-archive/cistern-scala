@@ -1,0 +1,8 @@
+@(board: BoardHeader, form: Form[NewThread])
+
+@main("Add thread") {
+<div class="titlebox">
+  @partial.titlebar("Add thread", Seq(board))
+  @partial.addthread(board.id, form)
+</div>
+}

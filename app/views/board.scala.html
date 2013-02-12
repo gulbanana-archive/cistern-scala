@@ -1,8 +1,8 @@
-@(id: String, title: String, threads: Seq[(String, String, UserHeader, String, Int)])
+@(board: BoardHeader, threads: Seq[(String, String, UserHeader, String, Int)])
 
-@main(s"Cistern: $title") {
+@main(board.title) {
 <div class="titlebox">
-  <h3>@title</h3>
+  @partial.titlebar(board.title)
 
   <div class="inset bordered">
   <table class="alternating-rows">
@@ -23,7 +23,7 @@
           <p>@thread._5</p>
         </td>
         <td nowrap>
-          <p>@user(thread._3) on @thread._4</p>
+          <p>@partial.user(thread._3) on @thread._4</p>
         </td>
       </tr>
     }
@@ -33,20 +33,7 @@
 </div>
 
 <div class="unfocused titlebox"> 
-  <h3>Add thread</h3>
-  <div class="inset bordered">
-    @helper.form(action = routes.Board.post(id)) {
-      <table>
-        <tr>
-          <td nowrap>Thread title:</td>
-          <td width="100%">@helper.inputText(NewThread.form("subject"), 'placeholder->"Enter thread title", 'size->100)</td>
-          <td nowrap><button>Post</button></td>
-        </tr>
-        <tr>
-          <td colspan="3">@helper.textarea(NewThread.form("content"), 'placeholder->"Enter post content")</td>
-        </tr>
-      </table>
-    }
-  </div>
+  @partial.titlebar("Add thread")
+  @partial.addthread(board.id, NewThread.form)
 </div>
 }

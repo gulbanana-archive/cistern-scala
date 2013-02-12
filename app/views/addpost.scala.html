@@ -1,0 +1,8 @@
+@(thread: ThreadHeader, board: BoardHeader, postform: Form[NewPost])
+
+@main("Add post") {
+<div class="titlebox"> 
+  @partial.titlebar("Add post", Seq(board, thread))
+  @partial.addpost(thread.id, postform)
+</div>
+}

@@ -71,4 +71,9 @@ object Repository {
     (PostContext.tupled(ctxQuery.first), PostDetail.tupled(postsQuery.first))
   }
   
+  case class ThreadAndBoard(subject: String, board: String, title: String)
+  def getThreadAndBoard(threadID: String) = DB.withSession { implicit session =>
+    
+    ThreadAndBoard("", "", "")
+  }
 }

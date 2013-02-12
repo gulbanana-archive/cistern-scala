@@ -8,8 +8,8 @@ import views._
 object Post extends Controller {
   def view(id: String) = Action {
     val (context, post) = getPost(id)
-    Ok(html.single(BoardHeader(context.boardid, context.boardtitle),
-                   ThreadHeader(context.threadid, context.threadtitle),
-                   post))
+    Ok(html.viewpost(BoardHeader(context.boardid, context.boardtitle),
+                     ThreadHeader(context.threadid, context.threadtitle),
+                     post))
   }
 }

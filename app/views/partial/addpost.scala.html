@@ -1,0 +1,15 @@
+@(id: String, postform: Form[NewPost])
+
+<div class="inset bordered">
+  @helper.form(action = routes.Thread.post(id)) {
+    <table>
+      <tr>
+        <td width="100%">Posting as (anonymous)</td>
+        <td nowrap><button>Post</button></td>
+      </tr>
+      <tr>
+        <td colspan="2">@helper.textarea(postform("content"), 'placeholder->"Enter post content")</td>
+      </tr>
+    </table>
+  }
+</div>

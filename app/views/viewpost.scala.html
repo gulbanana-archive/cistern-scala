@@ -1,0 +1,10 @@
+@(board: views.BoardHeader, thread: views.ThreadHeader, p: views.PostDetail)
+
+@main("View post") {
+<div class="titlebox">
+  @partial.titlebar("View post", Seq(board, thread))
+  <div class="inset">
+    @partial.post(p)
+  </div>
+</div>
+}

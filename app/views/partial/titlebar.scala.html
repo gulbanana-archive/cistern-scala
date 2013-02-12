@@ -1,0 +1,7 @@
+@(page: String, links: Seq[Header] = Seq())
+<h3>
+  @for(link <- links) {
+    <a href="@link.uri">@link.description</a> ::
+  }
+  @page
+</h3>

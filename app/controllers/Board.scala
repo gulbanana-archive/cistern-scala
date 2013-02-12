@@ -11,10 +11,12 @@ object Board extends Controller {
   
   def view(id: String) = Action {
     val board = getBoardThreads(id)
-    Ok(views.html.board(id, board.title, board.threads map {
+    Ok(views.html.board(BoardHeader(id, board.title), board.threads map {
       thread => (thread.threadid, thread.subject, UserHeader(thread.userid, thread.author), formatter.format(thread.date), thread.postcount)
     } ))
   }
+  
+  def addpost(id: String) = TODO
   
   def post(id: String) = TODO
 }

@@ -1,0 +1,16 @@
+@(id: String, postform: Form[NewThread])
+
+<div class="inset bordered">
+  @helper.form(action = routes.Board.post(id)) {
+    <table>
+      <tr>
+        <td nowrap>Thread title:</td>
+        <td width="100%">@helper.inputText(postform("subject"), 'placeholder->"Enter thread title", 'size->100)</td>
+        <td nowrap><button>Post</button></td>
+      </tr>
+      <tr>
+        <td colspan="3">@helper.textarea(postform("content"), 'placeholder->"Enter post content")</td>
+      </tr>
+    </table>
+  }
+</div>
