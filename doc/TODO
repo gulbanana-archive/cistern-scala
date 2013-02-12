@@ -1,9 +1,17 @@
-posting
+fix the ID scheme - shortguid? http://www.singular.co.nz/blog/archive/2007/12/20/shortguid-a-shorter-and-url-friendly-guid-in-c-sharp.aspx
+handle thread titles which aren't linkable, e.g. spaces
+order threads by update time
+show last post on topic list
+implement some basic post formatting - paragraphs! url detection.
 make stat display work
-postgresql
 auth
 add some ~ajax~
 avatar upload 
 error views
 pagination
 restore javascript minification (requirejs)
+
+play.api.Application$$anon$1: Execution exception[[PSQLException: ERROR: duplicate key value violates unique constraint "Thread_pkey"
+  Detail: Key (id)=(--) already exists.]]
+  
+ find/fix reordering bug
