@@ -73,7 +73,15 @@ object Repository {
   
   case class ThreadAndBoard(subject: String, board: String, title: String)
   def getThreadAndBoard(threadID: String) = DB.withSession { implicit session =>
+    val query = for {
+      t <- Threads if t.id === threadID
+      b <- t.board
+    } yield (t.subject, b.id, b.title)
     
-    ThreadAndBoard("", "", "")
+    ThreadAndBoard.tupled(query.first)
+  }
+  
+  def getBoardTitle(boardID: String) = DB.withSession { implicit session =>
+    Boards.filter(_.id === boardID).map(_.title).first
   }
 }

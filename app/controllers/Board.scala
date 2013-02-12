@@ -16,7 +16,17 @@ object Board extends Controller {
     } ))
   }
   
-  def addpost(id: String) = TODO
+  def addpost(id: String) = Action {
+    val title = getBoardTitle(id)
+    Ok(views.html.addthread(BoardHeader(id, title), NewThread.form))
+  }
   
-  def post(id: String) = TODO
+  def post(id: String) = Action { implicit Request =>
+    NewThread.form.bindFromRequest.fold(failedForm => {
+      val title = getBoardTitle(id)
+      BadRequest(views.html.addthread(BoardHeader(id, title), failedForm))
+    }, success => {
+      Redirect(routes.Board.view(id)) 
+    })
+  }
 }
