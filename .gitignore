@@ -16,3 +16,4 @@ dist
 .cache
 /.target
 /bin
+conf/prod.conf
