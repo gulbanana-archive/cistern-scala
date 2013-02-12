@@ -45,7 +45,7 @@ object Commands {
     val first5 = alphanum.split(" ", 5).take(5)
     val putative = first5.mkString("-")
     
-    if (nonUnique(putative))
+    if (nonUnique(putative) || putative == "")
       putative + "-" + UUID.randomUUID().toString()
     else
       putative
