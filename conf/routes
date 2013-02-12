@@ -5,6 +5,7 @@
 # Testing routes
 GET     /board/predef             controllers.Test.board
 GET     /thread/predef            controllers.Test.thread
+GET     /thread/predef/1          controllers.Test.thread
 GET     /post/predef              controllers.Test.post
 GET     /user/predef              controllers.Test.user
 GET     /gen                      controllers.Test.generateTestData
