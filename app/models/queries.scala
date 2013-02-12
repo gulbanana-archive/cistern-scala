@@ -7,7 +7,7 @@ import java.sql.Timestamp
 import views.PostDetail
 import Schema._
 
-object Repository {
+object Queries {
   
   //XXX this uses two queries, is that more efficient than one which returns redundant titles?
   case class BoardWithThreads(title: String, threads: Seq[BoardThread])
@@ -50,7 +50,7 @@ object Repository {
     val postsQuery = for {
       p <- Posts if p.threadID === threadID
       u <- p.poster
-    } yield (p.id, u.id, u.username, ConstColumn("/assets/img/") ++ u.id ++ ".png", p.content, p.posted)
+    } yield (p.id, u.id, u.username, ConstColumn("/assets/images/") ++ u.id ++ ".png", p.content, p.posted)
       
     ThreadContents(subject, boardid, title, postsQuery.sortBy(_._6).list.map(PostDetail.tupled))
   }
@@ -60,7 +60,7 @@ object Repository {
     val postsQuery = for {
       p <- Posts if p.id === postID
       u <- p.poster
-    } yield (p.id, u.id, u.username, ConstColumn("/assets/img/") ++ u.id ++ ".png", p.content, p.posted)
+    } yield (p.id, u.id, u.username, ConstColumn("/assets/images/") ++ u.id ++ ".png", p.content, p.posted)
     
     val ctxQuery = for {
       p <- Posts if p.id === postID
