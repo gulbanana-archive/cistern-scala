@@ -3,11 +3,6 @@
 # ~~~~
 
 # Testing routes
-GET     /board/predef             controllers.Test.board
-GET     /thread/predef            controllers.Test.thread
-GET     /thread/predef/1          controllers.Test.thread
-GET     /post/predef              controllers.Test.post
-GET     /user/predef              controllers.Test.user
 GET     /gen                      controllers.Test.generateTestData
 
 # Main routes
@@ -17,8 +12,9 @@ POST    /board/:id/post           controllers.Board.post(id)
 GET     /board/:id                controllers.Board.view(id)
 
 POST    /thread/:id/post          controllers.Thread.post(id)
+GET     /thread/:id/last          controllers.Thread.viewLast(id)
+GET     /thread/:id               controllers.Thread.viewFirst(id)
 GET     /thread/:id/:page         controllers.Thread.view(id, page:Int)
-GET     /thread/:id               controllers.Thread.view(id, page:Int = 1)
 
 GET     /post/:id                 controllers.Post.view(id)
 
