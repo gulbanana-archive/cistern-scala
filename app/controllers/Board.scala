@@ -27,8 +27,8 @@ object Board extends Controller {
       val title = getBoardTitle(id)
       BadRequest(views.html.addthread(BoardHeader(id, title), failedForm))
     }, success => {
-      Commands.newThread(id, "anonymous", success.subject, success.contents)
-      Redirect(routes.Thread.view(id)) 
+      val threadID = Commands.newThread(id, "anonymous", success.subject, success.contents)
+      Redirect(routes.Thread.view(threadID)) 
     })
   }
 }
