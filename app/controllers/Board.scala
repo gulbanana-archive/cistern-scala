@@ -2,7 +2,8 @@ package controllers
 
 import play.api._
 import play.api.mvc._
-import models.Repository._
+import models.Queries._
+import models.Commands
 import views._
 
 object Board extends Controller {
@@ -26,6 +27,7 @@ object Board extends Controller {
       val title = getBoardTitle(id)
       BadRequest(views.html.addthread(BoardHeader(id, title), failedForm))
     }, success => {
+      Commands.newThread(id, "anonymous", success.subject, success.contents)
       Redirect(routes.Board.view(id)) 
     })
   }

@@ -2,7 +2,7 @@ package controllers
 
 import play.api._
 import play.api.mvc._
-import models.Repository._
+import models.Queries._
 import views._
 
 object Post extends Controller {

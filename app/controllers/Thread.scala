@@ -2,7 +2,8 @@ package controllers
 
 import play.api._
 import play.api.mvc._
-import models.Repository._
+import models.Queries._
+import models.Commands
 import views._
 
 object Thread extends Controller {
@@ -26,6 +27,7 @@ object Thread extends Controller {
       val ThreadAndBoard(subject, board, title) = getThreadAndBoard(id)
       BadRequest(views.html.addpost(ThreadHeader(id, subject), BoardHeader(board, title), failedForm))
     }, success => {
+      Commands.newPost(id, "anonymous", success.contents)
       Redirect(routes.Thread.viewFirst(id)) //XXX change this to viewLast once that's implemented 
     })
   }

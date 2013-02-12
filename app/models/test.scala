@@ -17,7 +17,8 @@ object TestRepository {
         ("VoxPVoxD", "VoxPVoxD", now),
         ("tom", "tom", now),
         ("ninjeff", "ninjeff", now),
-        ("tim", "squimmy", now)
+        ("tim", "squimmy", now),
+        ("anonymous", "Anonymous Coward", now)
       )
      
       Boards.insertAll(
