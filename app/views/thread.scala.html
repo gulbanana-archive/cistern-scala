@@ -1,8 +1,8 @@
-@(id: String, subject: String, board: BoardHeader, posts: Seq[PostDetail])
+@(id: String, subject: String, board: BoardHeader, posts: Seq[PostDetail], postform: Form[NewPost])
 
 @main(s"Cistern: $subject") {
 <div class="titlebox"> 
-  <h2><a href="@routes.Board.view(board.id)">@board.title</a> :: @subject</h2>
+  <h3><a href="@routes.Board.view(board.id)">@board.title</a> :: @subject</h3>
 
   <div class="inset">
     @for(p <- posts) {
@@ -21,7 +21,7 @@
           <td nowrap><button>Post</button></td>
         </tr>
         <tr>
-          <td colspan="2">@helper.textarea(NewThread.form("content"), 'placeholder->"Enter post content")</td>
+          <td colspan="2">@helper.textarea(postform("content"), 'placeholder->"Enter post content")</td>
         </tr>
       </table>
     }

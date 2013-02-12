@@ -16,7 +16,8 @@ object TestRepository {
         ("ferrinus", "FerrinusPrime", now),
         ("VoxPVoxD", "VoxPVoxD", now),
         ("tom", "tom", now),
-        ("ninjeff", "ninjeff", now)
+        ("ninjeff", "ninjeff", now),
+        ("tim", "squimmy", now)
       )
      
       Boards.insertAll(
@@ -28,7 +29,7 @@ object TestRepository {
         ("ill-take-the-high-road", "I'll take the high road, and you take the low road", now, "tom", "cistern"),
         ("the-high-road-is-my", "The high road is my road, the low road's the slow road!", now, "tom", "cistern"),
         ("ill-guarantee-ya", "I'll guarantee ya I'll be there to see ya", now, "tom", "cistern"),
-        ("predef", "Click here for the predefined in-memory thread (does not call database)", now, "banana", "cistern"),
+        ("predef", "the thread formerly known as the predefined in-memory thread", now, "tim", "cistern"),
         ("on-the-bonnie-bonnie-banks", "On the bonnie, bonnie banks of Loch Lomond...", now, "tom", "cistern"),
         ("goonsay", "^^^^^^^^^ :goonsay:", now, "VoxPVoxD", "cistern"),
         ("ha-ha-ha", "ha ha ha i have hacked this forum", now, "ninjeff", "cistern")
@@ -62,7 +63,15 @@ object TestRepository {
         ("22", ":goonsay:", now, "VoxPVoxD", "goonsay"),
         
         ("17", "all your post are belong to us", now, "ninjeff", "ha-ha-ha"),
-        ("18", "or it could be more like disbelief marks you, the mage. as soon as you've been zapped, you'll always lose to disbelief for the rest of the scene. i don't like how that looks for multiple mages though, it'd be weird to see one laughing and chasing another because only one got unlucky", now, "ferrinus", "ha-ha-ha") 
+        ("18", "or it could be more like disbelief marks you, the mage. as soon as you've been zapped, you'll always lose to disbelief for the rest of the scene. i don't like how that looks for multiple mages though, it'd be weird to see one laughing and chasing another because only one got unlucky", now, "ferrinus", "ha-ha-ha"),
+        
+        ("23", "previous game my entourage consisted of a harlequin baby, an aborted foetus, a dead baby's soul and one of those tumours that's actually a twin", now, "tim", "predef"),
+        ("24", "argh like the kind where they strangle each other in the womb?", now, "banana", "predef"),
+        ("25", "no, like that thing where someone thinks they have a tumor and when the doctors open them up to cut it out, it turns out they've had a siamese twin their whole life and the tumor has teeth and hair and such", now, "tim", "predef"),
+        ("26", "i think it's a type of teratoma?", now, "tim", "predef"),
+        ("27", "is that really a twin though it's just like a extra growth of certain bits", now, "banana", "predef"),
+        ("28", "actual twins have apparently been reported but it's apparenly much more often just growths of certain bits", now, "tim", "predef"),
+        ("29", "like, just eyes or spines or teeth or w/e", now, "tim", "predef")
       )
     }
   }
