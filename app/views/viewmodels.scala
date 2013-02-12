@@ -17,5 +17,5 @@ case class BoardHeader(id: String, title: String) extends Header(title) {
 }
 
 case class ThreadHeader(id: String, subject: String) extends Header(subject) {
-  override val uri = controllers.routes.Thread.viewFirst(id).url
+  override val uri = controllers.routes.Thread.view(id).url
 }

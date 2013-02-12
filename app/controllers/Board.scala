@@ -28,7 +28,7 @@ object Board extends Controller {
       BadRequest(views.html.addthread(BoardHeader(id, title), failedForm))
     }, success => {
       Commands.newThread(id, "anonymous", success.subject, success.contents)
-      Redirect(routes.Board.view(id)) 
+      Redirect(routes.Thread.view(id)) 
     })
   }
 }

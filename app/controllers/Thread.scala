@@ -7,13 +7,13 @@ import models.Commands
 import views._
 
 object Thread extends Controller {
-  def view(id: String, page: Int) = Action {
+  def viewPage(id: String, page: Int) = Action {
     val thread = getThreadPosts(id)
     
     Ok(views.html.thread(ThreadHeader(id, thread.subject), BoardHeader(thread.boardid, thread.board), thread.posts, NewPost.form))
   }
   
-  def viewFirst(id: String) = view(id, 1)
+  def view(id: String) = viewPage(id, 1)
   
   def viewLast(id: String) = TODO
   
@@ -28,7 +28,7 @@ object Thread extends Controller {
       BadRequest(views.html.addpost(ThreadHeader(id, subject), BoardHeader(board, title), failedForm))
     }, success => {
       Commands.newPost(id, "anonymous", success.contents)
-      Redirect(routes.Thread.viewFirst(id)) //XXX change this to viewLast once that's implemented 
+      Redirect(routes.Thread.view(id)) //XXX change this to viewLast once that's implemented 
     })
   }
 }

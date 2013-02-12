@@ -15,8 +15,8 @@ GET     /board/:id                controllers.Board.view(id)
 GET     /thread/:id/post          controllers.Thread.addpost(id)
 POST    /thread/:id/post          controllers.Thread.post(id)
 GET     /thread/:id/last          controllers.Thread.viewLast(id)
-GET     /thread/:id               controllers.Thread.viewFirst(id)
-GET     /thread/:id/:page         controllers.Thread.view(id, page:Int)
+GET     /thread/:id               controllers.Thread.view(id)
+GET     /thread/:id/:page         controllers.Thread.viewPage(id, page:Int)
 
 GET     /post/:id                 controllers.Post.view(id)
 
