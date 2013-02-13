@@ -1,7 +1,7 @@
-fix the ID scheme - shortguid? http://www.singular.co.nz/blog/archive/2007/12/20/shortguid-a-shorter-and-url-friendly-guid-in-c-sharp.aspx
 handle thread titles which aren't linkable, e.g. spaces
 order threads by update time
-show last post on topic list
+show last post/poster on topic list
+show some thread content
 implement some basic post formatting - paragraphs! url detection.
 make stat display work
 auth

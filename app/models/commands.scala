@@ -13,16 +13,14 @@ import Schema._
 
 object Commands {
   def newPost(threadID: String, userID: String, content: String) = DB.withSession { implicit session =>
-    var postID = makeID(content, postExists)
+    var postID = makeID(content)
     
     Posts.insert((postID, content, now, userID, threadID))
-    
-    postID
   }
   
   def newThread(boardID: String, userID: String, subject: String, content: String) = DB.withSession { implicit session =>
-    var threadID = makeID(subject, threadExists)
-    var postID = makeID(content, postExists)    
+    var threadID = makeID(subject)
+    var postID = makeID(content)    
     
     Threads.insert((threadID, subject, now, userID, boardID))
     Posts.insert((postID, content, now, userID, threadID))
@@ -30,24 +28,11 @@ object Commands {
     threadID
   }
   
-  private def postExists(postID: String) = DB.withSession { implicit session =>
-    Posts.filter(_.id === postID).firstOption.nonEmpty
-  }
-  
-  private def threadExists(postID: String) = DB.withSession { implicit session =>
-    Posts.filter(_.id === postID).firstOption.nonEmpty
-  }
-  
   private def now = new Timestamp(System.currentTimeMillis)
   
-  private def makeID(data: String, nonUnique: String => Boolean) = {
+  private def makeID(data: String) = {
     val alphanum = data.replaceAll("[^a-zA-Z0-9\\s]", "")
-    val first5 = alphanum.split(" ", 5).take(5)
-    val putative = first5.mkString("-")
-    
-    if (nonUnique(putative) || putative == "")
-      putative + "-" + UUID.randomUUID().toString()
-    else
-      putative
+    val first5 = alphanum.split(" ", 7).take(6)
+    (Base62.encode(UUID.randomUUID) :: first5.toList).mkString("-")
   }
 }
