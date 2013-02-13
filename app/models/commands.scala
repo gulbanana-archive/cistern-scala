@@ -32,7 +32,7 @@ object Commands {
   
   private def makeID(data: String) = {
     val alphanum = data.replaceAll("[^a-zA-Z0-9\\s]", "")
-    val first5 = alphanum.split(" ", 7).take(6)
+    val first5 = alphanum.split(" ", 8).take(7)
     (Base62.encode(UUID.randomUUID) :: first5.toList).mkString("-")
   }
 }
