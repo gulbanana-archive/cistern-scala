@@ -1,42 +1,45 @@
 package models
 
+import scala.math.Ordering
+import scala.slick.jdbc.{GetResult, StaticQuery=>Q}
+import java.sql.Timestamp
 import play.api.Play.current
+import play.api.Logger
 import play.api.db.slick.DB
 import play.api.db.slick.Config.driver.simple._
-import java.sql.Timestamp
 import views.PostDetail
 import Schema._
 
 object Queries {
+  implicit val timestampOrdering: Ordering[Timestamp] = Ordering.fromLessThan(_ before _)
   
-  //XXX this uses two queries, is that more efficient than one which returns redundant titles?
-  case class BoardWithThreads(title: String, threads: Seq[BoardThread])
-  case class BoardThread(threadid: String, userid: String, author: String, subject: String, date: Timestamp, postcount: Int)
+  /**
+   * does what it says on the tin
+   */
+  def getBoardTitle(boardID: String) = DB.withSession { implicit session =>
+    Boards.filter(_.id === boardID).map(_.title).first
+  }
+  
+  /**
+   * returns a list of the threads in a board, with their first and last posts
+   */
+  case class DatedAuthor(userid: String, username: String, date: Timestamp)
+  case class BoardThread(threadid: String, subject: String, postcount: Int, first: DatedAuthor, last: DatedAuthor)
+  implicit val getThreadResult = GetResult(r => BoardThread(r.<<, r.<<, r.<<, DatedAuthor(r.<<, r.<<, r.<<), DatedAuthor(r.<<, r.<<, r.<<)))
   def getBoardThreads(boardID: String) = DB.withSession { implicit session =>
-    val title = Boards.filter(_.id === boardID).map(_.title).first
-      
-    val postcountQuery = for {
-      p <- Posts
-      t <- p.thread if t.boardID === boardID
-    } yield (t.id, p.id)
+    val threadsQuery = Q.query[String, BoardThread]("""
+        select "Thread"."id", "Thread"."subject", count(lastpost), firstposter."id", firstposter."username", "Thread"."posted", min(lastpost)."id", min(lastpost)."username", min(lastpost)."posted"
+        from "Thread"
+        inner join "Poster" firstposter on "Thread"."posterID"=firstposter."id" 
+        inner join (select p."threadID", p."posted", u."id", u."username"
+                    from "Post" p
+                    inner join "Poster" u on p."posterID" = u."id"
+                    order by p."posted" desc) lastpost on thread."id"=lastpost."threadID"
+        where "Thread"."boardID"=?
+        group by "Thread"."id", "Thread"."subject", 0, firstposter."id", firstposter."username", "Thread"."posted"
+    """)
     
-    val postcounts = postcountQuery.groupBy { case (threadid, postid) =>
-      threadid
-    }.map { case (threadid, grouping) =>
-      (threadid, grouping.length)
-    }.list.toMap.withDefaultValue(0)
-    
-    val threadsQuery = for {
-      t <- Threads
-      u <- t.poster
-      b <- t.board if b.id === boardID
-    } yield (t.id, u.id, u.username, t.subject, t.posted)
-    
-    val threads = threadsQuery.list.map { case (threadid, userid, username, subject, posted) =>
-      BoardThread(threadid, userid, username, subject, posted, postcounts(threadid))
-    }
-    
-    BoardWithThreads(title, threads)
+    threadsQuery(boardID).list
   }
   
   case class ThreadContents(subject: String, boardid: String, board: String, posts: Seq[PostDetail])
@@ -79,9 +82,5 @@ object Queries {
     } yield (t.subject, b.id, b.title)
     
     ThreadAndBoard.tupled(query.first)
-  }
-  
-  def getBoardTitle(boardID: String) = DB.withSession { implicit session =>
-    Boards.filter(_.id === boardID).map(_.title).first
   }
 }

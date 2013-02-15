@@ -8,12 +8,18 @@ import views._
 
 object Board extends Controller {
   
-  val formatter = new java.text.SimpleDateFormat("yyyy-MM-dd")
+  val formatter = new java.text.SimpleDateFormat("MMM d h:m a")
   
   def view(id: String) = Action {
-    val board = getBoardThreads(id)
-    Ok(views.html.board(BoardHeader(id, board.title), board.threads map {
-      thread => (thread.threadid, thread.subject, UserHeader(thread.userid, thread.author), formatter.format(thread.date), thread.postcount)
+    val title = getBoardTitle(id)
+    val threads = getBoardThreads(id)
+    
+    Ok(views.html.board(BoardHeader(id, title), threads.map {
+      thread => ThreadDetail(
+        ThreadHeader(thread.threadid, thread.subject),
+        thread.postcount, 
+        UserHeader(thread.first.userid, thread.first.username), formatter.format(thread.first.date),
+        UserHeader(thread.last.userid, thread.last.username), formatter.format(thread.last.date))
     } ))
   }
   

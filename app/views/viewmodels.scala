@@ -2,8 +2,6 @@ package views
 
 import java.util.Date
 
-case class PostDetail(postid: String, userid: String, author: String, avatar: String, content: String, posted: Date)
-
 abstract class Header(val description: String) {
   def uri : String
 }
@@ -19,3 +17,7 @@ case class BoardHeader(id: String, title: String) extends Header(title) {
 case class ThreadHeader(id: String, subject: String) extends Header(subject) {
   override val uri = controllers.routes.Thread.view(id).url
 }
+
+case class PostDetail(postid: String, userid: String, author: String, avatar: String, content: String, posted: Date)
+
+case class ThreadDetail(thread: ThreadHeader, postcount: Int, firstPoster: UserHeader, firstPosted: String, lastPoster: UserHeader, lastPosted: String)

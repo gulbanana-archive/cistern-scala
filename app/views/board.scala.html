@@ -1,4 +1,4 @@
-@(board: BoardHeader, threads: Seq[(String, String, UserHeader, String, Int)])
+@(board: BoardHeader, threads: Seq[ThreadDetail])
 
 @main(board.title) {
 <div class="titlebox">
@@ -10,20 +10,26 @@
     <tr>
       <th><h4>Thread</h4></th>
       <th><h4>Posts</h4></th>
-      <th><h4>Author</h4></th>
+      <th><h4>Last</h4></th>
     </tr>
     </thead>
     <tbody>
     @for(thread <- threads) {
       <tr>
         <td width="100%">
-          <p><a href="@routes.Thread.view(thread._1)">@thread._2</a></p>
+          <p>
+            <a href="@routes.Thread.view(thread.thread.id)">@thread.thread.subject</a><br/>
+            <small>@thread.firstPoster.username, @thread.firstPosted</small>
+          </p>
         </td>
         <td nowrap>
-          <p>@thread._5</p>
+          <p>@thread.postcount</p>
         </td>
         <td nowrap>
-          <p>@partial.user(thread._3) on @thread._4</p>
+          <p>
+            @partial.user(thread.lastPoster)<br/>
+            <small>@thread.lastPosted</small>
+          </p>
         </td>
       </tr>
     }

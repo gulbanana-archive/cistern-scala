@@ -15,3 +15,4 @@ play.api.Application$$anon$1: Execution exception[[PSQLException: ERROR: duplica
   Detail: Key (id)=(--) already exists.]]
   
  find/fix reordering bug
+setup debugging
